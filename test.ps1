@@ -1,0 +1,2 @@
+# tts testing
+Invoke-RestMethod -Uri 'http://localhost:8000/tts/generate' -Method Post -Headers @{'Content-Type' = 'application/json' } -Body '{"text": "Hello, this is a test.", "voice": "Kore"}' -OutFile 'audio.wav'
