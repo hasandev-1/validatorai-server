@@ -1,3 +1,4 @@
+from sqlalchemy.orm import sessionmaker
 from sqlalchemy import text
 from sqlalchemy import create_engine
 from app.config import DATABASE_URL
@@ -7,6 +8,20 @@ from sqlalchemy.ext.declarative import declarative_base
 
 engine = create_engine(DATABASE_URL)
 Base = declarative_base()
+
+# we need to create a local session between the app and database
+
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+# Dependency Function that gives us the db session for connecting 
+
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
 # metadata is used to create the tables
 try:
@@ -21,3 +36,5 @@ try:
     connection.close()
 except Exception:
     print("Failed to connect the database")
+
+
