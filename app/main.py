@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from .routers import router
 from .db.database  import engine , Base
 from app.models import users
+from app.routers.tts_routers import tts_router 
 
 # creating the tables
 app = FastAPI()
@@ -20,4 +21,4 @@ def hello():
 
 app.include_router(router)   
 app.include_router(auth_router)
-
+app.include_router(tts_router)

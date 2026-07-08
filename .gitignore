@@ -124,3 +124,9 @@ env/
 # FastAPI/Uvicorn/Env files
 .env
 .env.*
+!.env.example
+
+scratch.py
+test.db
+
+docs_anu
