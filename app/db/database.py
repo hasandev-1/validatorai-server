@@ -4,6 +4,7 @@ from sqlalchemy import create_engine
 from app.config import DATABASE_URL
 from sqlalchemy.ext.declarative import declarative_base
 
+
 # creating a database engine 
 
 engine = create_engine(DATABASE_URL)
